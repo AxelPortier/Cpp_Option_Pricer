@@ -4,11 +4,16 @@ PutOption::PutOption(double expiry, double strike)
     : EuropeanVanillaOption(expiry, strike)
 {}
 
-double PutOption::payoff(double z) const {
+double PutOption::payoff(double spot) const {
     double K = getStrike();
-    return (K >= z) ? (K - z) : 0.0;
+    if (spot > K){
+        return 0.0;
+    }
+    else {
+        return spot-K;
+    }
 } // Payoff function for put option : max(K - z, 0)
 
 EuropeanVanillaOption::optionType PutOption::GetOptionType() const {
-    return optionType::put;
-} // Return option type as put
+    return EuropeanVanillaOption::optionType::Put;
+}

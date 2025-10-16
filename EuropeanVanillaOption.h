@@ -6,7 +6,7 @@
 
 class EuropeanVanillaOption : public Option {
 public:
-    enum class optionType { call, put };
+    enum class optionType {Call, Put};
 
 private:
     double _strike;
