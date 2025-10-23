@@ -1,6 +1,10 @@
 #ifndef BINARYTREE
 #define BINARYTREE
 
+#include <vector>
+#include<stdexcept>
+#include <iostream>
+
 template <typename T> //BinaryTree<int>, the compilator replace all T by int
 class BinaryTree {
 private :

@@ -1,6 +1,10 @@
 #include <iostream>
 #include "BinaryTree.h"
 
+#include <vector>
+#include<stdexcept>
+#include <iostream>
+
 template <typename T>
 void BinaryTree<T>::setDepth(int n) {
     _tree.resize(n);   // Resize the number of levels
