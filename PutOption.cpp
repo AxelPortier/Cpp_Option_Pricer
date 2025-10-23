@@ -10,7 +10,7 @@ double PutOption::payoff(double spot) const {
         return 0.0;
     }
     else {
-        return spot-K;
+        return K-spot;
     }
 } // Payoff function for put option : max(K - z, 0)
 
