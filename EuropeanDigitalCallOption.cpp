@@ -1,5 +1,4 @@
 #include "EuropeanDigitalCallOption.h"
-#include <stdexcept>
 
 EuropeanDigitalCallOption::EuropeanDigitalCallOption(double expiry, double strike)
     : EuropeanDigitalOption(expiry, strike)
@@ -11,4 +10,5 @@ EuropeanDigitalCallOption::EuropeanDigitalCallOption(double expiry, double strik
 double EuropeanDigitalCallOption::getPayoff(double spot) const
 {
     return (spot >= _strike) ? 1.0 : 0.0; // Digital call payoff: h(z) = 1 if z >= K, 0 otherwise
+    // Ternary operator: if spot >= strike, return 1.0; otherwise return 0.0
 }
