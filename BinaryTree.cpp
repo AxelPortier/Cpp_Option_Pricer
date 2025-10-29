@@ -42,3 +42,5 @@ void BinaryTree<T>::display() {     //Display in a beautiful way the tree
         std::cout << std::endl;
     }
 } 
+
+template class BinaryTree<double>;
