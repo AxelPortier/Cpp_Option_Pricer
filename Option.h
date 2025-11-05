@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+
+enum class OptionType {Call, Put};
 
 class Option {
 private :
