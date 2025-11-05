@@ -7,6 +7,7 @@ public:
     PutOption(double expiry, double strike); // Constructor from VanillaOption
 
     virtual double payoff(double z) const override; // Payoff function for put option : max(K - z, 0)
-    virtual optionType GetOptionType() const override; // Return option type as put
+    virtual OptionType GetOptionType() const override; // Return option type as put
+    ~PutOption(){}
 };
 

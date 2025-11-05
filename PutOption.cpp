@@ -14,6 +14,5 @@ double PutOption::payoff(double spot) const {
     }
 } // Payoff function for put option : max(K - z, 0)
 
-EuropeanVanillaOption::optionType PutOption::GetOptionType() const {
-    return EuropeanVanillaOption::optionType::Put;
-}
+OptionType PutOption::GetOptionType() const {return OptionType::Put;}
+PutOption::~PutOption(){}

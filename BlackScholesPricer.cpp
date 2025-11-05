@@ -1,7 +1,7 @@
 #include "BlackScholesPricer.h"
 #include <cmath>
 
-BlackScholesPricer::BlackScholesPricer(EuropeanVanillaOption* option, 
+BlackScholesPricer::BlackScholesPricer(Option* option, 
                                        double asset_price, 
                                        double interest_rate, 
                                        double volatility)
@@ -15,7 +15,7 @@ double BlackScholesPricer::norm_cdf(double x) const {
 
 double BlackScholesPricer::calculate_d1() const {
     double S = _asset_price;
-    double K = _option->getStrike();
+    double K = _option->GetStrike();
     double T = _option->getExpiry();
     double r = _interest_rate;
     double sigma = _volatility;
@@ -29,14 +29,14 @@ double BlackScholesPricer::calculate_d2() const {
 
 double BlackScholesPricer::operator()() const {
     double S = _asset_price;
-    double K = _option->getStrike();
+    double K = _option->GetStrike();
     double T = _option->getExpiry();
     double r = _interest_rate;
     
     double d1 = calculate_d1();
     double d2 = calculate_d2();
     
-    if (_option->GetOptionType() == EuropeanVanillaOption::optionType::Call) {
+    if (_option->GetOptionType() == OptionType::Call) {
         return S * norm_cdf(d1) - K * std::exp(-r * T) * norm_cdf(d2);
     }
     else {
@@ -47,7 +47,7 @@ double BlackScholesPricer::operator()() const {
 double BlackScholesPricer::delta() const {
     double d1 = calculate_d1();
     
-    if (_option->GetOptionType() == EuropeanVanillaOption::optionType::Call) {
+    if (_option->GetOptionType() == OptionType::Call) {
         return norm_cdf(d1);
     }
     else {

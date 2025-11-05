@@ -5,13 +5,13 @@
 
 class BlackScholesPricer {
 private:
-    EuropeanVanillaOption* _option;  // Pointer to the option
+    Option* _option;  // Pointer to the option
     double _asset_price;             // Underlying asset price
     double _interest_rate;           // Risk-free interest rate
     double _volatility;              // Volatility
 
 public:
-    BlackScholesPricer(EuropeanVanillaOption* option, double asset_price, 
+    BlackScholesPricer(Option* option, double asset_price, 
                        double interest_rate, double volatility);
     double operator()() const;
     double delta() const;
