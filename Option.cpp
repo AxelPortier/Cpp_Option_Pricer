@@ -5,3 +5,8 @@ Option::Option(double exp) : _expiry(exp){};
 double Option::getExpiry() const{
     return _expiry;
 }
+
+double Option::payoffPath(const std::vector<double>& path) const{
+    if (path.empty()) return 0.0;
+    return payoff(path.back());
+}
