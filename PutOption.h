@@ -4,10 +4,10 @@
 
 class PutOption : public EuropeanVanillaOption {
 public:
-    PutOption(double expiry, double strike); // Constructor from VanillaOption
+    PutOption(double, double); // Constructor from VanillaOption
+    ~PutOption();
 
-    virtual double payoff(double z) const override; // Payoff function for put option : max(K - z, 0)
-    virtual OptionType GetOptionType() const override; // Return option type as put
-    ~PutOption(){}
+    double payoff(double) const override; // Payoff function for put option
+    OptionType GetOptionType() const override; // Return option type as put
 };
 
