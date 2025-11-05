@@ -14,6 +14,6 @@ double CallOption::payoff(double spot) const {
     }
 } // Payoff function for call option : max(z - K, 0)
 
-EuropeanVanillaOption::optionType CallOption::GetOptionType() const {
-    return EuropeanVanillaOption::optionType::Call;
-} // Return option type as call
+OptionType CallOption::GetOptionType() const {return OptionType::Call;} // Return option type as call
+
+CallOption::~CallOption(){}

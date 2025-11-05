@@ -5,11 +5,14 @@
 #include <stdexcept>
 
 class EuropeanDigitalOption : public Option {
-    protected:
+    private:
         double _strike;
-        EuropeanDigitalOption(double expiry, double strike);
+        
     public:
+        EuropeanDigitalOption(double expiry, double strike);
         double getStrike() const;
-        virtual ~EuropeanDigitalOption() = default;
+        virtual OptionType GetOptionType()override = 0;
+        ~EuropeanDigitalOption();
         virtual double getPayoff(double spot) const = 0;
+        bool isDigital() override;
 };

@@ -5,7 +5,6 @@
 
 class EuropeanVanillaOption : public Option {
 public:
-    enum class optionType {Call, Put};
 
 private:
     double _strike;
@@ -13,5 +12,5 @@ private:
 public:
     EuropeanVanillaOption(double expiry, double strike);
     double getStrike() const;
-    virtual optionType GetOptionType() const = 0;
+    virtual OptionType GetOptionType() const = 0;
 };

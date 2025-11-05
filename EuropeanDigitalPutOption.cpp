@@ -7,8 +7,12 @@ EuropeanDigitalPutOption::EuropeanDigitalPutOption(double expiry, double strike)
     // Validation is done in parent class constructor
 }
 
+OptionType EuropeanDigitalPutOption::GetOptionType() { return OptionType::Put; }
+
 double EuropeanDigitalPutOption::getPayoff(double spot) const
 {
-    return (spot <= _strike) ? 1.0 : 0.0; // Digital put payoff: h(z) = 1 if z <= K, 0 otherwise
+    return (spot <= getStrike()) ? 1.0 : 0.0; // Digital put payoff: h(z) = 1 if z <= K, 0 otherwise
     // Ternary operator: if spot <= strike, return 1.0; otherwise return 0.0
 }
+
+EuropeanDigitalPutOption::~EuropeanDigitalPutOption() { }
