@@ -1,5 +1,4 @@
-#ifndef EUROPEANDIGITALCALLOPTION_H
-#define EUROPEANDIGITALCALLOPTION_H
+#pragma once
 
 #include "EuropeanDigitalOption.h"
 
@@ -10,5 +9,3 @@ class EuropeanDigitalCallOption : public EuropeanDigitalOption
         EuropeanDigitalCallOption(double expiry, double strike); // constructor
         double getPayoff(double spot) const override; // useful to override payoff function
 };
-
-#endif

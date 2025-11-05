@@ -1,5 +1,4 @@
-#ifndef EUROPEANDIGITALPUTOPTION_H
-#define EUROPEANDIGITALPUTOPTION_H
+#pragma once
 
 #include "EuropeanDigitalOption.h"
 
@@ -10,5 +9,3 @@ public:
     EuropeanDigitalPutOption(double expiry, double strike);
     double getPayoff(double spot) const override;
 };
-
-#endif

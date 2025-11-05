@@ -1,5 +1,4 @@
-#ifndef PUTOPTION_H
-#define PUTOPTION_H
+#pragma once
 
 #include "EuropeanVanillaOption.h"
 
@@ -11,4 +10,3 @@ public:
     virtual optionType GetOptionType() const override; // Return option type as put
 };
 
-#endif

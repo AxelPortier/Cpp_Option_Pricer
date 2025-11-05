@@ -1,5 +1,4 @@
-#ifndef EUROPEANDIGITALOPTION_H
-#define EUROPEANDIGITALOPTION_H
+#pragma once
 
 
 #include "Option.h"
@@ -14,6 +13,3 @@ class EuropeanDigitalOption : public Option {
         virtual ~EuropeanDigitalOption() = default;
         virtual double getPayoff(double spot) const = 0;
 };
-
-
-#endif

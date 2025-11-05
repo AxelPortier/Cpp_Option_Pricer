@@ -1,5 +1,4 @@
-#ifndef OPTION_H 
-#define OPTION_H
+#pragma once
 
 class Option {
 private :
@@ -11,4 +10,3 @@ public :
     virtual double payoff(double) const = 0; //pure virtual function
     virtual double payoffPath(const std::vector<double>& path) const; //non pure virtual function for path-dependent options
 };
-#endif

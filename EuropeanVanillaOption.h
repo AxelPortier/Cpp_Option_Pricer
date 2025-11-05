@@ -1,5 +1,4 @@
-#ifndef EUROPEANVANILLAOPTION_H
-#define EUROPEANVANILLAOPTION_H
+#pragma once
 
 #include "Option.h"
 #include <stdexcept>
@@ -16,5 +15,3 @@ public:
     double getStrike() const;
     virtual optionType GetOptionType() const = 0;
 };
-
-#endif

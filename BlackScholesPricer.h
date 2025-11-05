@@ -1,5 +1,4 @@
-#ifndef BLACKSCHOLESPRICER_H
-#define BLACKSCHOLESPRICER_H
+#pragma once
 
 #include "EuropeanVanillaOption.h"
 #include <cmath>
@@ -20,4 +19,3 @@ public:
     double calculate_d1() const;
     double calculate_d2() const;
 };
-#endif

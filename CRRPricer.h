@@ -1,5 +1,4 @@
-#ifndef CRRPRICER_H
-#define CRRPRICER_H
+#pragma once
 
 #include "Option.h"
 #include "BinaryTree.h"
@@ -26,5 +25,3 @@ public:
     void compute();
     double operator()(bool closed_form = false);
 };
-
-#endif
