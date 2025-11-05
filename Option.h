@@ -13,8 +13,8 @@ public :
 
     double getExpiry() const; //getter
     virtual double payoff(double) const = 0; //pure virtual function because every option has different payoff so it has to be override
-    virtual OptionType GetOptionType() const = 0;
-    virtual double GetStrike() const = 0;
+    virtual OptionType getOptionType() const = 0;
+    virtual double getStrike() const = 0;
 
     virtual double payoffPath(const std::vector<double>& ) const; //non pure virtual function for path-dependent options
     virtual std::vector<double> getTimeSteps();
