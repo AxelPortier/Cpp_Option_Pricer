@@ -3,6 +3,8 @@
 #include "PutOption.h"
 #include "BlackScholesPricer.h"
 
+//g++ main.cpp BlackScholesPricer.cpp Option.cpp EuropeanVanillaOption.cpp CallOption.cpp PutOption.cpp EuropeanDigitalOption.cpp EuropeanDigitalPutOption.cpp EuropeanDigitalCallOption.cpp -o main
+
 int main() {
     double S0 = 100, K = 101, T = 5, r = 0.01, sigma = 0.1;
     // or: double S0{100}, K{101}, T{5}, r{0.01}, sigma{0.1};
