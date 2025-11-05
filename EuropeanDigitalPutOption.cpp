@@ -1,11 +1,7 @@
 #include "EuropeanDigitalPutOption.h"
 
 
-EuropeanDigitalPutOption::EuropeanDigitalPutOption(double expiry, double strike)
-    : EuropeanDigitalOption(expiry, strike)
-{
-    // Validation is done in parent class constructor
-}
+EuropeanDigitalPutOption::EuropeanDigitalPutOption(double expiry, double strike) : EuropeanDigitalOption(expiry, strike) {}// Validation is done in parent class constructor
 
 OptionType EuropeanDigitalPutOption::GetOptionType() { return OptionType::Put; }
 

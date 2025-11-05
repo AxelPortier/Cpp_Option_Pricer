@@ -8,7 +8,7 @@ private:
 
 public:
     // Method that will be implemented in the cpp
-    EuropeanVanillaOption(double, double );
+    EuropeanVanillaOption(double, double);
     ~EuropeanVanillaOption();
     double getStrike() const override;
 
