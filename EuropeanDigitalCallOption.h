@@ -1,13 +1,13 @@
 #pragma once
-
 #include "EuropeanDigitalOption.h"
 
 
 class EuropeanDigitalCallOption : public EuropeanDigitalOption
 {
-    public:
-        EuropeanDigitalCallOption(double expiry, double strike); // constructor
-        double getPayoff(double spot) const override; // useful to override payoff function
-        OptionType GetOptionType() override;
-        ~EuropeanDigitalCallOption();
+public:
+    EuropeanDigitalCallOption(double, double); // constructor
+    ~EuropeanDigitalCallOption();
+
+    OptionType getOptionType() const override;
+    double getPayoff(double spot) const override; // useful to override payoff function
 };
