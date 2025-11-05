@@ -1,13 +1,32 @@
 #include <iostream>
 #include "CallOption.h"
 #include "PutOption.h"
-#include "EuropeanDigitalCallOption.h"
-#include "EuropeanDigitalPutOption.h"
 #include "BlackScholesPricer.h"
-#include "CRRPricer.h"
-#include "BinaryTree.h"
-#include <vector>
 
-int main(){
-    
+int main() {
+    double S0 = 100, K = 101, T = 5, r = 0.01, sigma = 0.1;
+    // or: double S0{100}, K{101}, T{5}, r{0.01}, sigma{0.1};
+
+    CallOption opt1(T, K);
+    PutOption opt2(T, K);
+
+    std::cout << "European options 1\n\n";
+
+    BlackScholesPricer pricer1(&opt1, S0, r, sigma);
+    std::cout << "Call option: price = " << pricer1()
+              << ", delta = " << pricer1.delta() << "\n";
+
+    BlackScholesPricer pricer2(&opt2, S0, r, sigma);
+    std::cout << "Put option: price = " << pricer2()
+              << ", delta = " << pricer2.delta() << "\n";
+
+    int N = 5;
+    double U = 0.05;
+    double D = -0.045;
+    double R = 0.01;
+
+    std::cout << "\nU = " << U << ", D = " << D << ", R = " << R << "\n";
+
+    return 0;
 }
+

@@ -8,6 +8,6 @@ public:
     ~PutOption();
 
     double payoff(double) const override; // Payoff function for put option
-    OptionType GetOptionType() const override; // Return option type as put
+    OptionType getOptionType() const override; // Return option type as put
 };
 

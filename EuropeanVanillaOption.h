@@ -14,7 +14,7 @@ public:
 
     // Virtual pure methode that won't be override in the .ccp
     virtual double payoff(double) const = 0;
-    virtual OptionType GetOptionType() const = 0;
+    virtual OptionType getOptionType() const = 0;
 
     friend class BlackScholesPricer;
 };
