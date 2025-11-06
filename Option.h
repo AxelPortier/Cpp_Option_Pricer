@@ -20,7 +20,7 @@ public :
     virtual std::vector<double> getTimeSteps();
     
     //Enable code to check what is the option
-    virtual bool isDigital();
-    virtual bool isAsianOption();
-    virtual bool isAmericanOption();
+    virtual bool isDigital () const;
+    virtual bool isAsianOption () const;
+    virtual bool isAmericanOption() const;
 };

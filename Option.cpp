@@ -28,6 +28,6 @@ std::vector<double> Option::getTimeSteps() {
 	return timesteps;
 }
 
-bool Option::isDigital(){return false;}
-bool Option::isAsianOption(){return false;} 
-bool Option::isAmericanOption(){return false;}
+bool Option::isDigital() const{return false;}
+bool Option::isAsianOption() const{return false;} 
+bool Option::isAmericanOption() const{return false;}
