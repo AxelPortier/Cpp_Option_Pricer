@@ -11,7 +11,7 @@ class EuropeanDigitalOption : public Option {
         ~EuropeanDigitalOption();
 
         double getStrike() const override;
-        bool isDigital() override;
+        bool isDigital() const override;
 
         // Virtual pure method that won't be implemented in the .cpp
         virtual OptionType getOptionType() const = 0;

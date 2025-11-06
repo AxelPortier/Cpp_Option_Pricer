@@ -9,6 +9,6 @@ EuropeanDigitalOption::EuropeanDigitalOption(double expiry, double strike) : Opt
 EuropeanDigitalOption::~EuropeanDigitalOption() {}
 
 // Overriden
-bool EuropeanDigitalOption::isDigital() {return true;}
+bool EuropeanDigitalOption::isDigital() const {return true;}
 double EuropeanDigitalOption::getStrike() const {return _strike;}
 
