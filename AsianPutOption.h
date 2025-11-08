@@ -1,5 +1,5 @@
-#ifndef ASIANPUTOPTION_H
-#define ASIANPUTOPTION_H
+#pragma once
+
 #include <vector>
 #include "AsianOption.h"
 
@@ -15,5 +15,3 @@ private:
 
     double payoff(double) const override; //Override the payoff function of Option class with a function that compute the payoff of an Asian Put Option
 };
-
-#endif
