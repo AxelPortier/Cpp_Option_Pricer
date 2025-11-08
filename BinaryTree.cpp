@@ -5,19 +5,38 @@
 #include<stdexcept>
 #include <iostream>
 
+// Constructor
 template <typename T>
-void BinaryTree<T>::setDepth(int n) {
-    _tree.resize(n);   // Resize the number of levels
-    for (int i = 0; i < n; i++) {
-        _tree[i].resize(i + 1); //Each level has i has i+1 nodes
+BinaryTree<T>::BinaryTree(int depth) {
+    _depth = depth;
+    _tree.resize(_depth + 1);  //Initialize the full tree 
+    for (int i = 0; i < _tree.size(); i++)
+        _tree[i].resize(i + 1); // Initialize the size of each level [[..,..],[[..,..][..,..]],..]
+}
+
+//Destructor
+template <typename T>
+BinaryTree<T>::~BinaryTree(){}
+
+template<typename T>
+void BinaryTree<T>::setDepth(int depth){
+    if(_depth > depth){ //Erase a part of the tree
+        _depth = depth;
+        _tree.resize(_depth + 1);
     }
-    _depth = n; //Update the attribut of the class
+    else{ //Create new branches in this case
+        _tree.resize(depth + 1);
+        for(int i = _depth; i < _tree.size(); i++){
+            _tree[i].resize(i+1);
+        }
+        _depth = depth;
+    }
 }
 
 template <typename T>
-void BinaryTree<T>::setNode(int n, int i, T value){ //Set the value stored in value _tree at the given indices n,i
+void BinaryTree<T>::setNode(int idx, int id2, T value){ //Set the value stored in value _tree at the given indices n,i
     if((n < _depth) && (n >= 0) && (_tree[n].size() > i) && (_tree[n].size()>=0)){
-        _tree[n][i] = value;
+        _tree[idx1][idx2] = value;
     }
     else{
         throw std::invalid_argument("Node or Depth is incorrect");
