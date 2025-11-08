@@ -1,5 +1,4 @@
-#ifndef MT_SINGLETON_H
-#define MT_SINGLETON_H
+#pragma once
 
 #include <random>
 
@@ -22,5 +21,3 @@ private:
     static MT& instance(); // Return the unique instance
 
 };
-
-#endif 
