@@ -16,5 +16,4 @@ public:
     bool isAsianOption() const override;  //return true
 private:
     double payoffPath(const vector<double>&) const override;  //Redefine payoffPath, first we compute the mean then we call payoff (which depends on the option being a call or put option)
-
 };
