@@ -19,7 +19,7 @@ private:
 
 public:
     CRRPricer(Option* o, int N, double S0, double U, double D, double R);
-    CRRPricer();
+    ~CRRPricer();
 
     void DisplayTree() ;
     void OptionDisplayTree() ;

@@ -12,7 +12,7 @@ public:
 
     AsianOption(double expiry, const std::vector<double>& monitoringTimes); //Constructor that takes the expiry date and monitoring times
     const vector<double>& getTimeSteps() const; //Getter of timeSteps
-    ~AsianOption(){} //Destructor
+    ~AsianOption(); //Destructor
     bool isAsianOption() const override;  //return true
 private:
     double payoffPath(const vector<double>&) const override;  //Redefine payoffPath, first we compute the mean then we call payoff (which depends on the option being a call or put option)

@@ -11,6 +11,7 @@ using namespace std;
 
 CRRPricer::CRRPricer(Option* o, int N, double S0, double U, double D, double R) : _option(o), _depth(N), _asset_price(S0), _up(U), _down(D),  _interest_rate (R) {
     if (!(_down<_interest_rate && _interest_rate<_up)) {throw invalid_argument("Arbitrage");} 
+    if(o->isAsianOption()) {throw invalid_argument("Error : Asian option !");}
     _tree.setDepth(_depth);
     _tree.setNode(0,0,_asset_price);
     for(int n = 1; n <= _depth; n++) {

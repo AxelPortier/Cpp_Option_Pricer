@@ -34,9 +34,9 @@ void BinaryTree<T>::setDepth(int depth){
 }
 
 template <typename T>
-void BinaryTree<T>::setNode(int idx, int id2, T value){ //Set the value stored in value _tree at the given indices n,i
-    if((n < _depth) && (n >= 0) && (_tree[n].size() > i) && (_tree[n].size()>=0)){
-        _tree[idx1][idx2] = value;
+void BinaryTree<T>::setNode(int n, int i, T value){ //Set the value stored in value _tree at the given indices n,i
+    if((n < _depth) && (n >= 0) && (i >= 0) && (i < _tree[n].size())){
+        _tree[n][i] = value;
     }
     else{
         throw std::invalid_argument("Node or Depth is incorrect");
