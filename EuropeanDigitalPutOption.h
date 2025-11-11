@@ -9,5 +9,5 @@ public:
     ~EuropeanDigitalPutOption();
 
     OptionType getOptionType() const override;
-    double getPayoff(double) const override;
+    double payoff(double) const override;
 };

@@ -1,15 +1,14 @@
 #include "AsianOption.h"
 #include <numeric>
 #include <vector>
-using namespace std;
 
-AsianOption::AsianOption(double expiry,const vector<double>& monitoringTimes) : Option(expiry),timeSteps_(monitoringTimes) //Constructor that takes expiry (from Option class), and monitoringTimes = (t1,...,tm)
+AsianOption::AsianOption(double expiry,const std::vector<double>& monitoringTimes) : Option(expiry), _timeSteps(monitoringTimes) //Constructor that takes expiry (from Option class), and monitoringTimes = (t1,...,tm)
 { }
 AsianOption::~AsianOption(){}//Destructor
 
-const vector<double>& AsianOption::getTimeSteps() const {return timeSteps_;} //To get the timeSteps = (t1,...,tm)
+std::vector<double> AsianOption::getTimeSteps() const {return _timeSteps;} //To get the timeSteps = (t1,...,tm)
 
-double AsianOption::payoffPath(const vector<double>& path) const {
+double AsianOption::payoffPath(const std::vector<double>& path) const {
 	if (path.empty()) {
 		return 0.0; //Case where the path is empty : we return 0
 	}

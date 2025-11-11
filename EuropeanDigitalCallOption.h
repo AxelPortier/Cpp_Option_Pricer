@@ -9,5 +9,5 @@ public:
     ~EuropeanDigitalCallOption();
 
     OptionType getOptionType() const override;
-    double getPayoff(double spot) const override; // useful to override payoff function
+    double payoff(double spot) const override; // useful to override payoff function
 };

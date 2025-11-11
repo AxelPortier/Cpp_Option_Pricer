@@ -15,6 +15,6 @@ class EuropeanDigitalOption : public Option {
 
         // Virtual pure method that won't be implemented in the .cpp
         virtual OptionType getOptionType() const = 0;
-        virtual double getPayoff(double spot) const = 0;
+        virtual double payoff(double spot) const = 0;
 
 };
