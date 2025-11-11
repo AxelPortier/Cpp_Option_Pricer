@@ -22,3 +22,8 @@ public:
     T getNode(int, int) const ; //Get the value of the node at the indice n,i
     void display(); //Display in a beautiful way the tree
 };
+
+//template calss for each type
+extern template class BinaryTree<bool>;
+extern template class BinaryTree<double>;
+extern template class BinaryTree<int>;

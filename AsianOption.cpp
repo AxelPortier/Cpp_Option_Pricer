@@ -19,5 +19,5 @@ double AsianOption::payoffPath(const std::vector<double>& path) const {
 	}
 	return payoff((1/ static_cast<double>(path.size()))* sum); //We use the payoff function on the mean. Note that the payoff depends on the option being a put or a call
 }
-
+double AsianOption::getStrike() const {return _strike;}
 bool AsianOption::isAsianOption() const{return true;}

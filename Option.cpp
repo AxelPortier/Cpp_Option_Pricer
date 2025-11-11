@@ -11,7 +11,7 @@ Option::Option(double expiry){
 }
 Option::~Option(){};
 
-double Option::getExpiry() const{return _expiry;} // Return maturity
+double Option::getExpiry() const {return _expiry;} // Return maturity
 
 //Return the payoff
 double Option::payoffPath(const std::vector<double>& path) const{
@@ -23,7 +23,7 @@ double Option::payoffPath(const std::vector<double>& path) const{
     }
 }
 
-std::vector<double> Option::getTimeSteps() const{
+std::vector<double>& Option::getTimeSteps() const{
 	std::vector<double> timesteps{ 0, _expiry };
 	return timesteps;
 }
