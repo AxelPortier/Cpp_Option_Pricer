@@ -2,7 +2,7 @@
 #include <vector>
 #include <math.h>
 #include "singleton_MT.h"
-
+#include <stdexcept>
 
 BlackScholesMCPricer::BlackScholesMCPricer(Option* option, double initial_price, double interest_rate, double volatility) //Constructor
     : _option(option), _S0(initial_price), _r(interest_rate), _sigma(volatility),
