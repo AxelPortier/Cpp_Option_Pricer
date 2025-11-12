@@ -14,3 +14,4 @@ double AmericanCallOption::payoff(double spot) const {
         return spot - getStrike();
     }
 }
+

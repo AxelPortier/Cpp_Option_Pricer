@@ -6,7 +6,7 @@ class AmericanOption : public Option {
 private:
 	double _strike;
 public:
-    AmericanOption(double expiry, double maturity); //Constructor that takes the expiry date and monitoring times
+    AmericanOption(double expiry, double strike); //Constructor that takes the expiry date and strike
     ~AmericanOption(); //Destructor
 
     bool isAmericanOption() const override;  //return true

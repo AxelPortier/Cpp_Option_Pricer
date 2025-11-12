@@ -9,5 +9,4 @@ public:
     
     OptionType getOptionType() const override;
     double payoff(double) const override;
-    double getStrike() const override;
 };

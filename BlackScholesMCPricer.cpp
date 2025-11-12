@@ -20,7 +20,7 @@ void BlackScholesMCPricer::generate(int nb_paths) {
     double T=_option->getExpiry();
     for (int i=0; i<nb_paths; i++) {
         std::vector<double> path;
-        std::vector<double>& timeSteps = _option->getTimeSteps(); //We get the timesteps from the option
+        std::vector<double> timeSteps = _option->getTimeSteps(); //We get the timesteps from the option
 
         double St = _S0;
         path.reserve(timeSteps.size()); //We pre-allocate memory for timeSteps.size() elements

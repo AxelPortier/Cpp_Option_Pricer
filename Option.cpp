@@ -23,7 +23,7 @@ double Option::payoffPath(const std::vector<double>& path) const{
     }
 }
 
-std::vector<double>& Option::getTimeSteps() const{
+std::vector<double> Option::getTimeSteps() const{
 	std::vector<double> timesteps{ 0, _expiry };
 	return timesteps;
 }

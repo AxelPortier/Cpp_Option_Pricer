@@ -17,7 +17,7 @@ public :
     virtual double getStrike() const = 0;
 
     virtual double payoffPath(const std::vector<double>& ) const; //non pure virtual function for path-dependent options
-    virtual std::vector<double>& getTimeSteps() const;
+    virtual std::vector<double> getTimeSteps() const;
     
     //Enable code to check what is the option
     virtual bool isDigital () const;
