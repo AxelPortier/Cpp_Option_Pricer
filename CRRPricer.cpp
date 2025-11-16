@@ -47,16 +47,18 @@ void CRRPricer::compute() { //Fills the H tree with the option prices
         double q = (_interest_rate - _down)/(_up - _down);
 
         for(int i = 0; i <= _depth; i++) {
-            _tree.setNode(_depth, i, _asset_price*pow(1+_up,i)*pow(1+_down,_depth - i));
+            double S = _asset_price*pow(1+_up,i)*pow(1+_down,_depth - i);
+            _tree.setNode(_depth, i, S);
+            _H.setNode(_depth, i, _option->payoff(S));
             _exerciseTree.setNode(_depth,i,true); // forced to exercise at maturity
         }
 
         if (_option->isAmericanOption()) {
             for (int i = _depth - 1; i >= 0; i--) {//go back up in the tree in order to calculate option's value at each node
                 for (int j = 0; j <= i; j++) {
-                    double continuous_value = (q * _tree.getNode(i+1, j+1) + (1-q) * _tree.getNode(i+1, j)) / (1+ _interest_rate);
+                    double continuous_value = (q * _H.getNode(i+1, j+1) + (1-q) * _H.getNode(i+1, j)) / (1+ _interest_rate);
                     double intrinsic_value = _option->payoff(_asset_price * pow(1+_up, j) * pow(1+_down, i - j));
-                    _tree.setNode(i, j, std::max(continuous_value, intrinsic_value));
+                    _H.setNode(i, j, std::max(continuous_value, intrinsic_value));
 
                     // Set the exercise condtion for American options
                     _exerciseTree.setNode(i, j, continuous_value <= intrinsic_value);
@@ -67,12 +69,12 @@ void CRRPricer::compute() { //Fills the H tree with the option prices
         else {
             for (int i = _depth - 1; i >= 0; i--) {//go back up the tree by calculating the value of the option at each node
                 for (int j = 0; j <= i; j++) {
-                    // Calculate the value of the option at each node
-                    _tree.setNode(i, j, (q * _exerciseTree.getNode(i + 1, j + 1) + (1 - q) * _tree.getNode(i + 1, j)) / (1 + _interest_rate));
+                    double continuous_value = (q * _H.getNode(i+1, j+1) + (1-q) * _H.getNode(i+1, j)) / (1+ _interest_rate);
+                    _H.setNode(i, j, continuous_value);
                 }
             }
         }
-    _tree.display();
+    _H.display();
     }
 }
     
