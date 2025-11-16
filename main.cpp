@@ -20,7 +20,7 @@
 #include "BinaryTree.h"
 
 
-//g++ main.cpp AmericanCallOption.cpp AmericanPutOption.cpp AmericanOption.cpp BinaryTree.cpp AsianOption.cpp CRRPricer.cpp AsianCallOption.cpp AsianPutOption.cpp BlackScholesPricer.cpp Option.cpp EuropeanVanillaOption.cpp CallOption.cpp PutOption.cpp EuropeanDigitalOption.cpp EuropeanDigitalPutOption.cpp EuropeanDigitalCallOption.cpp -o main
+//g++ main.cpp singleton_MT.cpp AmericanCallOption.cpp AmericanPutOption.cpp BlackScholesMCPricer.cpp AmericanOption.cpp BinaryTree.cpp AsianOption.cpp CRRPricer.cpp AsianCallOption.cpp AsianPutOption.cpp BlackScholesPricer.cpp Option.cpp EuropeanVanillaOption.cpp CallOption.cpp PutOption.cpp EuropeanDigitalOption.cpp EuropeanDigitalPutOption.cpp EuropeanDigitalCallOption.cpp -o main
 //./main
 
 int main() {
