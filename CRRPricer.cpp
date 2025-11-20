@@ -12,14 +12,14 @@ CRRPricer::CRRPricer(Option* o, int depth, double S0, double U, double D, double
     if(o->isAsianOption()) {throw std::invalid_argument("Error : Asian option !");}
 
     _tree.setDepth(depth);
-    _tree.setNode(0,0,_asset_price);
     _exerciseTree.setDepth(depth);
 }
 // Overloaded constructor
-CRRPricer::CRRPricer(Option* option, int depth, double asset_price, double r, double volatility) : _asset_price(asset_price), _option(option) {
+CRRPricer::CRRPricer(Option* option, int depth, double asset_price, double r, double volatility) : _asset_price(asset_price), _option(option), _depth(depth) {
     if (option->isAsianOption()) {throw std::invalid_argument("Error: Asian Option not supported");}
     else {
         calculateParamsBS(depth, r, volatility);
+
         if (!(_down<_interest_rate && _interest_rate<_up)) {throw std::invalid_argument("Arbitrage");} 
 
         _tree.setDepth(depth);
@@ -48,6 +48,7 @@ void CRRPricer::compute() { //Fills the H tree with the option prices
 
         _tree.setNode(0, 0, _asset_price);
         for (int n = 1; n <= _depth; n++) {
+
             for (int i = 0; i <= n; i++) {
                 double S = _asset_price * pow(1 + _up, i) * pow(1 + _down, n - i);
                 _tree.setNode(n, i, S);
