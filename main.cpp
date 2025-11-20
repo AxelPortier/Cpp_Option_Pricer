@@ -30,7 +30,7 @@ int main() {
 
     CallOption call(T, K);
     PutOption put(T, K);
-
+    
     EuropeanDigitalCallOption call_digital(T, K);
     EuropeanDigitalPutOption put_digital(T, K);
 
@@ -72,8 +72,14 @@ int main() {
 	CRRPricer call_american_crr(&american_call, N, S0, U, D, R);
 	std::cout << "Price of the AmericanCallOption: " << call_american_crr() << std::endl<<std::endl;
 
+    CRRPricer call_american_crr_bs(&american_call,N,S0,r,sigma);
+    std::cout << "Price of the AmericanCallOption BS Params: " << call_american_crr_bs() << std::endl<<std::endl;
+
 	CRRPricer put_american_crr(&american_put, N, S0, U, D, R);
 	std::cout << "Price of the AmericanPutOption: " << put_american_crr() << std::endl<<std::endl;
+
+    CRRPricer put_american_crr_bs(&american_put,N,S0,r,sigma);
+    std::cout << "Price of the AmericanPutOption BS Params: " << put_american_crr_bs() << std::endl<<std::endl;
 
     std::cout<<"------------------------------------------------------------------------------"<<std::endl<<std::endl;
 
