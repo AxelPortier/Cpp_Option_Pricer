@@ -1,9 +1,10 @@
 #include "EuropeanDigitalPutOption.h"
 
+// Constructor: Initializes the base EuropeanDigitalOption with expiry and strike
 EuropeanDigitalPutOption::EuropeanDigitalPutOption(double expiry, double strike) : EuropeanDigitalOption(expiry, strike) {}
 EuropeanDigitalPutOption::~EuropeanDigitalPutOption() {}
 
-OptionType EuropeanDigitalPutOption::getOptionType() const {return OptionType::Put;}
+OptionType EuropeanDigitalPutOption::getOptionType() const {return OptionType::Put;} // Helper method to return the OptionType enum
 
 // Digital put payoff: h(z) = 1 if z <= K, 0 otherwise
 double EuropeanDigitalPutOption::payoff(double spot) const {return spot <= getStrike() ? 1.0 : 0.0;} // Ternary operator: if spot <= strike, return 1.0; otherwise return 0.0

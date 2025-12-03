@@ -1,7 +1,7 @@
 #pragma once
-
 #include "EuropeanVanillaOption.h"
 
+// Concrete class for European Put Option
 class PutOption : public EuropeanVanillaOption {
 public:
     PutOption(double, double); // Constructor from VanillaOption
