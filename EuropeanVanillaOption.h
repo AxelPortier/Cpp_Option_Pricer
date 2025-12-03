@@ -1,16 +1,20 @@
 #pragma once
-
 #include "Option.h"
 #include <stdexcept>
 
 class EuropeanVanillaOption : public Option {
-public:
-
 private:
     double _strike;
 
 public:
-    EuropeanVanillaOption(double expiry, double strike);
-    double getStrike() const;
-    virtual OptionType GetOptionType() const = 0;
+    // Method that will be implemented in the cpp
+    EuropeanVanillaOption(double, double);
+    ~EuropeanVanillaOption();
+    double getStrike() const override;
+
+    // Virtual pure methode that won't be override in the .ccp
+    virtual double payoff(double) const = 0;
+    virtual OptionType getOptionType() const = 0;
+
+    friend class BlackScholesPricer;
 };

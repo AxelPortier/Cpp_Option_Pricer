@@ -1,18 +1,20 @@
 #pragma once
-
-
 #include "Option.h"
-#include <stdexcept>
 
 class EuropeanDigitalOption : public Option {
     private:
         double _strike;
         
     public:
+        // Method that will be implemented in the .cpp
         EuropeanDigitalOption(double expiry, double strike);
-        double getStrike() const;
-        virtual OptionType GetOptionType()override = 0;
         ~EuropeanDigitalOption();
-        virtual double getPayoff(double spot) const = 0;
-        bool isDigital() override;
+
+        double getStrike() const override;
+        bool isDigital() const override;
+
+        // Virtual pure method that won't be implemented in the .cpp
+        virtual OptionType getOptionType() const = 0;
+        virtual double payoff(double spot) const = 0;
+
 };

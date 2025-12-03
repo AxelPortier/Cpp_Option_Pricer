@@ -4,10 +4,10 @@
 
 class CallOption : public EuropeanVanillaOption {
 public:
-    CallOption(double expiry, double strike); // Constructor from VanillaOption
-
-    virtual double payoff(double z) const override; // Payoff function for call option
-    virtual OptionType GetOptionType() const override; // Return option type
+    CallOption(double, double); // Constructor from VanillaOption
     ~CallOption();
+
+    double payoff(double) const override; // Payoff function for call option
+    OptionType getOptionType() const override; // Override and Return option type
 };
 
