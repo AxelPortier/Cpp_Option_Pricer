@@ -2,16 +2,18 @@
 #include "Option.h"
 #include <vector>
 
+// Base class for American options
 class AmericanOption : public Option {
 private:
-	double _strike;
+    double _strike;          // Strike price
 public:
-    AmericanOption(double expiry, double strike); //Constructor that takes the expiry date and strike
-    ~AmericanOption(); //Destructor
+    AmericanOption(double expiry, double strike); // Constructor
+    ~AmericanOption();                            // Destructor
 
-    bool isAmericanOption() const override;  //return true
-    double getStrike() const;
+    bool isAmericanOption() const override;       // Returns true
+    double getStrike() const;                     // Getter for strike
 
-    virtual double payoff(double) const = 0;    
+    // Pure virtual methods for derived classes
+    virtual double payoff(double) const = 0;
     virtual OptionType getOptionType() const = 0;
 };
