@@ -3,15 +3,16 @@
 #include <vector>
 #include "AsianOption.h"
 
+// Asian call option, derived from AsianOption
 class AsianCallOption : public AsianOption
 {
 private:
-    double _strike; //Stike K of the option
+    double _strike; // Strike K of the option
 
 public:
-    AsianCallOption(std::vector<double>& timeSteps, double strike); //Constructor
-    ~AsianCallOption(); //Destructor
+    AsianCallOption(std::vector<double>& timeSteps, double strike); // Constructor
+    ~AsianCallOption();                                            // Destructor
 
-    OptionType getOptionType() const override;
-    double payoff(double) const override; //Override the payoff function of Option class with a function that compute the payoff of an Asian Call Option
+    OptionType getOptionType() const override;                     // Returns Call
+    double payoff(double) const override;                          // Payoff of Asian call
 };
