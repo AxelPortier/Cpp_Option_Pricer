@@ -32,29 +32,31 @@ void BlackScholesMCPricer::generate(int nb_paths) {
             path.push_back(St); //We add the price to our vector path
         }
     
-        double payoff= _option->payoffPath(path);
-        double H = exp(-_r * T)* payoff;
+        double payoff= _option->payoffPath(path);      //We compute payoff from simulated path
+        double H = exp(-_r * T)* payoff;               
+
 
         _nb_paths+=1;
-        double delta_price = H - _price_estimate;
-        _price_estimate += delta_price/_nb_paths;
-        _sum_sq += H*H;
+        double delta_price = H - _price_estimate;       //We difference from current estimate
+        _price_estimate += delta_price/_nb_paths;       //And we update running mean estimator
+        _sum_sq += H*H;                                 //And after we accumulate squared values for variance
     }
 }
 
 double BlackScholesMCPricer::operator()() const {
     if (_nb_paths == 0) throw std::invalid_argument("Price estimate undefined. Generate paths first.");
-    return _price_estimate;
+    return _price_estimate;                 //Return error if no paths generated
 }
 
 std::vector<double> BlackScholesMCPricer::confidenceInterval() const {
-    if (_nb_paths == 0) throw std::invalid_argument("No paths generated.");
+    if (_nb_paths == 0) throw std::invalid_argument("No paths generated."); 
     double mean_sq = _sum_sq / _nb_paths;
     double variance = mean_sq - _price_estimate * _price_estimate;
     double std_dev = std::sqrt(variance);
-    double margin = 1.96 * std_dev / sqrt(_nb_paths);
-    return { _price_estimate - margin, _price_estimate + margin };
+    double margin = 1.96 * std_dev / sqrt(_nb_paths);               //Compute the CI margin
+    return { _price_estimate - margin, _price_estimate + margin };  // Return CI bounds
 }
+
 
 
 
