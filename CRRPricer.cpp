@@ -6,10 +6,10 @@
 #include "CRRPricer.h"
 
 #include <cmath>
-
+// Standard CRR Constructor
 CRRPricer::CRRPricer(Option* o, int depth, double S0, double U, double D, double R) : _option(o), _depth(depth), _asset_price(S0), _up(U), _down(D),  _interest_rate (R) {
-    if (!(_down<_interest_rate && _interest_rate<_up)) {throw std::invalid_argument("Arbitrage");} 
-    if(o->isAsianOption()) {throw std::invalid_argument("Error : Asian option !");}
+    if (!(_down<_interest_rate && _interest_rate<_up)) {throw std::invalid_argument("Arbitrage");} // Arbitrage check: The model admits no arbitrage if D < R < U
+    if(o->isAsianOption()) {throw std::invalid_argument("Error : Asian option !");} // Constraint: CRR does not support Asian options (Path Dependent)
 
     _tree.setDepth(depth);
     _exerciseTree.setDepth(depth);
@@ -18,8 +18,9 @@ CRRPricer::CRRPricer(Option* o, int depth, double S0, double U, double D, double
 CRRPricer::CRRPricer(Option* option, int depth, double asset_price, double r, double volatility) : _asset_price(asset_price), _option(option), _depth(depth) {
     if (option->isAsianOption()) {throw std::invalid_argument("Error: Asian Option not supported");}
     else {
+        // Calculate U, D, R based on Black-Scholes volatility and risk-free rate
         calculateParamsBS(depth, r, volatility);
-
+        // Verify arbitrage condition after calculation
         if (!(_down<_interest_rate && _interest_rate<_up)) {throw std::invalid_argument("Arbitrage");} 
 
         _tree.setDepth(depth);
@@ -45,7 +46,7 @@ void CRRPricer::compute() { //Fills the H tree with the option prices
 
     else{
         double q = (_interest_rate - _down)/(_up - _down);
-
+        // Build the Stock Price Tree | S(n, i) = S0 * (1+U)^i * (1+D)^(n-i)
         _tree.setNode(0, 0, _asset_price);
         for (int n = 1; n <= _depth; n++) {
 
@@ -54,13 +55,13 @@ void CRRPricer::compute() { //Fills the H tree with the option prices
                 _tree.setNode(n, i, S);
             }
         }
-
+        // Initialize Terminal Option Values at Maturity (n = N) | H(N, i) = payoff(S(N, i))
         for(int i = 0; i <= _depth; i++) {
             double S = _tree.getNode(_depth, i); 
             _H.setNode(_depth, i, _option->payoff(S));
             _exerciseTree.setNode(_depth, i, true); // forced to exercise at maturity
         }
-
+        // Backward Induction
         if (_option->isAmericanOption()) {
             for (int i = _depth - 1; i >= 0; i--) {//go back up in the tree in order to calculate option's value at each node
                 for (int j = 0; j <= i; j++) {
@@ -110,10 +111,12 @@ double CRRPricer::operator()(bool closed_form) {
                 double payoff = _option->payoff(_tree.getNode(N, i)); 
                 sum += probability * payoff;
             }
+            // Discount back to time 0
             return sum / pow(1.0 + _interest_rate, N);
-            }
+        }
 }
 
+// Computes U, D, and R to approximate Black-Scholes dynamics
 void CRRPricer::calculateParamsBS(int depth, double r, double volatility) {
     double h = _option->getExpiry() / depth;
     _up = std::exp((r + (std::pow(volatility, 2) / 2)) * h + volatility * std::sqrt(h)) - 1;
